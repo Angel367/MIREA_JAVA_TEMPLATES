@@ -7,7 +7,11 @@ public class Main {
         lockMap.put("3", 12);
         lockMap.put("2", 12);
         lockMap.put("1", 12);
-        System.out.println(lockMap.get("2"));
+        System.out.println(lockMap.size());
+
+        SynchronizedSet<Integer> synchronizedSet = new SynchronizedSet<>();
+        synchronizedSet.add(3);
+        System.out.println(synchronizedSet.isEmpty());
 
     }
 }

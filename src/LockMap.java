@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LockMap<K, V> implements Map<K, V>{
-    private final Map<Object, Object> map = new HashMap<Object, Object>();
+    private final Map<K, V> map = new HashMap<>();
     private final Lock lock = new ReentrantLock();
 
 
@@ -58,7 +58,7 @@ public class LockMap<K, V> implements Map<K, V>{
     public V get(Object key) {
         lock.lock();
         try {
-            return (V) map.get(key);
+            return map.get(key);
         }
         finally {
             lock.unlock();
@@ -69,7 +69,7 @@ public class LockMap<K, V> implements Map<K, V>{
     public V put(K key, V value) {
         lock.lock();
         try {
-            return (V) map.put(key, value);
+            return map.put(key, value);
         }
         finally {
             lock.unlock();
@@ -80,7 +80,7 @@ public class LockMap<K, V> implements Map<K, V>{
     public V remove(Object key) {
         lock.lock();
         try {
-            return (V) map.remove(key);
+            return map.remove(key);
         }
         finally {
             lock.unlock();
@@ -89,26 +89,56 @@ public class LockMap<K, V> implements Map<K, V>{
 
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
-
+        lock.lock();
+        try {
+            map.putAll(m);
+        }
+        finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public void clear() {
-
+        lock.lock();
+        try {
+            map.clear();
+        }
+        finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public Set<K> keySet() {
-        return null;
+        lock.lock();
+        try {
+            return map.keySet();
+        }
+        finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public Collection<V> values() {
-        return null;
+        lock.lock();
+        try {
+            return map.values();
+        }
+        finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public Set<Entry<K, V>> entrySet() {
-        return null;
+        lock.lock();
+        try {
+            return map.entrySet();
+        }
+        finally {
+            lock.unlock();
+        }
     }
 }

@@ -1,3 +1,5 @@
+package PrototypePattern;
+
 /**
  * Concrete Prototypes to clone
  */

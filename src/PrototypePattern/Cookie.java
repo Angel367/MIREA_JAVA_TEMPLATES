@@ -1,3 +1,5 @@
+package PrototypePattern;
+
 /**
  * Prototype Class
  */

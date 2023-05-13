@@ -8,7 +8,6 @@ public class Main {
         for (int i = 0; i < arrSize; i++)
             originalStrings[i] = Integer.toString(i);
 
-
         Function<String[], String[]> convert = baseStrings -> {
             String[] newStrings = new String[arrSize];
             for (int i = 0; i < baseStrings.length; i++)
@@ -16,11 +15,8 @@ public class Main {
 
             return newStrings;
         };
-
         String[] convertedStrings = convert.apply(originalStrings);
-
         for (int i = 0; i < arrSize; i++)
             System.out.print(convertedStrings[i] + " ");
-
     }
 }
